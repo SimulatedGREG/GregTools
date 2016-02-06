@@ -4,23 +4,23 @@
     <meta charset="utf-8">
     <title>GregTools</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="includes/styles.min.css" rel="stylesheet">
+    <link href="includes/vendor.min.css" rel="stylesheet">
   </head>
-  <body>
+  <body id="app">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">GregTools</span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">Chat</a>
-          <a class="mdl-navigation__link" href="">Poll</a>
-          <a class="mdl-navigation__link" href="">Alerts</a>
-          <a class="mdl-navigation__link" href="">Bot</a>
-          <a class="mdl-navigation__link" href="">Song</a>
+          <a class="mdl-navigation__link" v-link="{ path: '/foo' }">Chat</a>
+          <a class="mdl-navigation__link" v-link="{ path: '/bar' }">Poll</a>
+          <a class="mdl-navigation__link" v-link="">Alerts</a>
+          <a class="mdl-navigation__link" v-link="">Bot</a>
+          <a class="mdl-navigation__link" v-link="">Song</a>
         </nav>
       </div>
       <main class="mdl-layout__content">
         <div class="page-content">
-          <!-- VIEWS -->
+          <app></app>
         </div>
       </main>
     </div>

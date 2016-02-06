@@ -11,22 +11,35 @@ const gulp = require('gulp'),
   source = require('vinyl-source-stream'),
   babelify = require('babelify'),
   browserify = require('browserify'),
-  rename = require('gulp-rename');
+  rename = require('gulp-rename'),
+  vueify = require('vueify');
 
+vueify.compiler.applyConfig({
+  autoprefixer: {
+    browsers: ['last 2 Chrome versions']
+  },
+  sass: {
+    includePaths: ['src/sass']
+  }
+});
 
 gulp.task('serve', () => {
   electron.start();
-
   gulp.watch('main.js', ['electron:restart']);
 
   gulp.watch('index.html', ['electron:reload']);
-  gulp.watch('src/sass/**/*.scss', ['sass']);
-  gulp.watch('src/js/**/*.js', ['js']);
+  gulp.watch('src/sass/vendor.scss', ['sass']);
+  gulp.watch([
+    'src/js/**/*.js',
+    'src/js/components/**/*.vue',
+    'src/sass/*.scss',
+    '!src/sass/vendor.scss'
+  ], ['js']);
 });
 
 gulp.task('sass', () => {
-  return gulp.src('src/sass/styles.scss')
-    .pipe(concat('styles.min.css'))
+  return gulp.src('src/sass/vendor.scss')
+    .pipe(concat('vendor.min.css'))
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: ['last 2 Chrome versions']
@@ -47,11 +60,12 @@ gulp.task('js', () => {
     {
       presets: ['es2015']
     }
-  ]).bundle()
+  ]).transform(vueify)
+    .bundle()
     .on('error', (err) => console.log(err))
     .pipe(source('app.js'))
     .pipe(buffer())
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(rename('app.min.js'))
     .pipe(gulp.dest('includes/'))
     .on('end', electron.reload);
