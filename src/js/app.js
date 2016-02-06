@@ -1,1 +1,1 @@
-import Chat from './modules/_chat.js';
+import Router from './modules/Router';

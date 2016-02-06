@@ -20,7 +20,7 @@ gulp.task('serve', () => {
   gulp.watch('main.js', ['electron:restart']);
 
   gulp.watch('index.html', ['electron:reload']);
-  gulp.watch('src/sass/**/*.scss', ['sass', 'electron:reload']);
+  gulp.watch('src/sass/**/*.scss', ['sass']);
   gulp.watch('src/js/**/*.js', ['js']);
 });
 
@@ -32,12 +32,13 @@ gulp.task('sass', () => {
       browsers: ['last 2 Chrome versions']
     }))
     .pipe(cssnano())
-    .pipe(gulp.dest('includes/'));
+    .pipe(gulp.dest('includes/'))
+    .on('end', electron.reload);
 });
 
 gulp.task('js', () => {
   let bundler = browserify({
-    entries: 'src/js/app.js',
+    entries: 'src/js/src.js',
     debug: true
   });
 
@@ -50,7 +51,7 @@ gulp.task('js', () => {
     .on('error', (err) => console.log(err))
     .pipe(source('app.js'))
     .pipe(buffer())
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(rename('app.min.js'))
     .pipe(gulp.dest('includes/'))
     .on('end', electron.reload);

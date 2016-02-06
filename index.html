@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <meta charset="utf-8">
+    <title>GregTools</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="includes/styles.min.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Hello Greg!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">GregTools</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">Chat</a>
+          <a class="mdl-navigation__link" href="">Poll</a>
+          <a class="mdl-navigation__link" href="">Alerts</a>
+          <a class="mdl-navigation__link" href="">Bot</a>
+          <a class="mdl-navigation__link" href="">Song</a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          <!-- VIEWS -->
+        </div>
+      </main>
+    </div>
+
+
     <script>require('electron-connect').client.create();</script>
     <script src="includes/app.min.js"></script>
   </body>
