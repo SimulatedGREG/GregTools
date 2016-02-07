@@ -3,52 +3,40 @@
 </style>
 
 <template>
-  <h1>hello {{ view }}</h1>
-  <img src="http://ttv-api.s3.amazonaws.com/assets/connect_dark.png" @click="login()" class="twitch-connect" href="#" />
-  <h6 @click="logout()">logout</h6><br>
-  <h6 @click="status()">status</h6><br>
-  <h6 @click="init()">init</h6>
+  <view-header title="Dash"></view-header>
+  <div class="mdl-grid">
+    <fieldset>
+      <div class="mdl-cell mdl-cell--8-col">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="stream-title">
+          <label class="mdl-textfield__label" for="stream-title">Title</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="stream-game">
+          <label class="mdl-textfield__label" for="stream-game">Game</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="stream-lang">
+          <label class="mdl-textfield__label" for="stream-lang">Language</label>
+        </div>
+      </div>
+      <button class="mdl-button mdl-js-button mdl-button--raised">
+        Update
+      </button>
+    </fieldset>
+    <div class="mdl-cell mdl-cell--4-col">
+      <!-- <iframe src="http://www.twitch.tv/simulatedgreg/chat?popout=" frameborder="0" scrolling="no"></iframe> -->
+    </div>
+  </div>
 </template>
 
 <script>
-  import $ from 'jquery';
-  import Twitch from '../../vendor/twitch';
+  import ViewHeader from '../ViewHeader.vue';
 
   export default {
     data() {
-      return {
-        view: 'dash'
-      }
+      return { }
     },
-    methods: {
-      init() {
-        Twitch.init({
-          clientId: 'fkk3fkefezb58675yxpxu4ggh5ydgoq',
-          electron: true
-        }, function(error, status) {
-          if (error) {
-            console.log(error);
-          }
-        });
-      },
-      login() {
-        Twitch.login({
-          scope: ['user_read', 'channel_read']
-        });
-      },
-      logout() {
-        Twitch.logout((err) => {
-          console.log(err);
-        });
-      },
-      status() {
-        Twitch.getStatus({}, function(err, status) {
-          if (status.authenticated) {
-            console.log('authenticated!');
-          }
-          console.log(status);
-        });
-      }
-    }
+    components: { ViewHeader }
   }
 </script>
