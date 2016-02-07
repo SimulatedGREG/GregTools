@@ -7,6 +7,7 @@
     <div class="mdl-layout__drawer">
       <span class="mdl-layout-title">GregTools</span>
       <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" v-link="{ path: '/dash' }">Dash</a>
         <a class="mdl-navigation__link" v-link="{ path: '/chat' }">Chat</a>
         <a class="mdl-navigation__link" v-link="{ path: '/poll' }">Poll</a>
         <a class="mdl-navigation__link" v-link="{ path: '/alert' }">Alerts</a>
