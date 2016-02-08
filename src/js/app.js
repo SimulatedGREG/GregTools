@@ -49,3 +49,14 @@ router.redirect({
 });
 
 router.start(App, 'app');
+
+/**
+ * Init Twitch Node SDK
+ */
+Twitch.init({
+  clientId: 'fkk3fkefezb58675yxpxu4ggh5ydgoq',
+  electron: true
+}, (err, status) => {
+  if(err) console.log(err);
+  // TODO: BREAK ALL THE THINGS, warn user about not connecting
+});

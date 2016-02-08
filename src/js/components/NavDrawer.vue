@@ -14,6 +14,7 @@
         <a class="mdl-navigation__link" v-link="{ path: '/bot', activeClass: 'active' }">Bot</a>
         <a class="mdl-navigation__link" v-link="{ path: '/song', activeClass: 'active' }">Song</a>
       </nav>
+      <profile-status></profile-status>
     </div>
     <main class="mdl-layout__content">
       <div class="page-content">
@@ -24,9 +25,12 @@
 </template>
 
 <script>
+  import ProfileStatus from './NavDrawer/ProfileStatus.vue';
+
   export default {
     data() {
       return { }
-    }
+    },
+    components: { ProfileStatus }
   }
 </script>
