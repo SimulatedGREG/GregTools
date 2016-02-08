@@ -12,7 +12,8 @@ const gulp = require('gulp'),
   babelify = require('babelify'),
   browserify = require('browserify'),
   rename = require('gulp-rename'),
-  vueify = require('vueify');
+  vueify = require('vueify'),
+  stringify = require('stringify');
 
 vueify.compiler.applyConfig({
   autoprefixer: {
@@ -55,12 +56,8 @@ gulp.task('js', () => {
     debug: true
   });
 
-  return bundler.transform([
-    'babelify',
-    {
-      presets: ['es2015']
-    }
-  ]).transform(vueify)
+  return bundler.transform(['babelify', { presets: ['es2015'] }])
+    .transform(vueify)
     .bundle()
     .on('error', (err) => console.log(err))
     .pipe(source('app.js'))

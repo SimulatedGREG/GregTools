@@ -1,4 +1,3 @@
-import Mdl from '../../node_modules/material-design-lite/dist/material.min.js';
-
+import 'material-design-lite';
 
 import app from './app.js';

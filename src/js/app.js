@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import Resource from 'vue-resource';
 import App from './app.vue';
 
 import ChatView from './components/views/ChatView.vue';
@@ -10,6 +11,8 @@ import SongView from './components/views/SongView.vue';
 import DashView from './components/views/DashView.vue';
 
 Vue.use(Router);
+Vue.use(Resource);
+
 const router = new Router();
 
 router.map({
