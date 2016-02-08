@@ -11,7 +11,14 @@
 
   export default {
     data() {
-      return { }
+      return {
+        authenticated: false
+      }
+    },
+    methods: {
+      auth(status) {
+        this.$broadcast('auth-update', status);
+      }
     },
     components: { NavDrawer }
   }

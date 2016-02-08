@@ -9,34 +9,54 @@
 <template>
 
   <div class="mdl-list">
-    <div class="mdl-list__item">
+    <div class="mdl-list__item" v-if="!authenticated">
+      <span class="mdl-list__item-primary-content">
+        <i class="material-icons mdl-list__item-avatar">person</i>
+        <span>Login...</span>
+      </span>
+      <span class="mdl-list__item-secondary-content">
+        <button class="mdl-button mdl-js-button mdl-button--icon" @click="auth">
+          <i class="material-icons">exit_to_app</i>
+        </button>
+      </span>
+    </div>
+
+    <div class="mdl-list__item" v-if="authenticated">
       <span class="mdl-list__item-primary-content">
         <i class="material-icons mdl-list__item-avatar">person</i>
         <span>Bob Odenkirk</span>
       </span>
       <span class="mdl-list__item-secondary-content">
-        <button class="mdl-button mdl-js-button mdl-button--icon" @click="login">
+        <button class="mdl-button mdl-js-button mdl-button--icon">
           <i class="material-icons">exit_to_app</i>
         </button>
       </span>
     </div>
   </div>
 
+  {{test}}
+
 </template>
 
 <script>
+  import Twitch from '../../vendor/twitch';
+
   export default {
-    data() { return {} },
+    data() {
+      return {
+        authenticated: false
+      }
+    },
     methods: {
-      login() {
+      auth() {
         Twitch.login({
           scope: ['user_read', 'channel_read']
         });
-        setTimeout(() => {
-          Twitch.api({ method: 'channel' }, (err, channel) => {
-            // console.log(channel);
-          });
-        },4000);
+      }
+    },
+    events: {
+      'auth-update': function(status) {
+        this.authenticated = status;
       }
     }
   }

@@ -1,3 +1,5 @@
+import Twitch from './vendor/twitch';
+
 import Vue from 'vue';
 import Router from 'vue-router';
 import Resource from 'vue-resource';
@@ -10,6 +12,22 @@ import AlertView from './components/views/AlertView.vue';
 import SongView from './components/views/SongView.vue';
 import DashView from './components/views/DashView.vue';
 
+
+/**
+ * Initialize Twitch Node SDK
+ */
+Twitch.init({
+  clientId: 'fkk3fkefezb58675yxpxu4ggh5ydgoq',
+  electron: true
+}, (err, status) => {
+  if(err) console.log(err);
+  // TODO: BREAK ALL THE THINGS, warn user about not connecting
+});
+
+
+/**
+ * Initialize Router
+ */
 Vue.use(Router);
 Vue.use(Resource);
 
@@ -48,15 +66,14 @@ router.redirect({
   '*': '/dash'
 });
 
+/**
+ * Start app
+ */
 router.start(App, 'app');
 
 /**
- * Init Twitch Node SDK
+ * Watchers
  */
-Twitch.init({
-  clientId: 'fkk3fkefezb58675yxpxu4ggh5ydgoq',
-  electron: true
-}, (err, status) => {
-  if(err) console.log(err);
-  // TODO: BREAK ALL THE THINGS, warn user about not connecting
-});
+ Twitch.events.addListener('auth.login', function(status) {
+   router.app.auth(status.authenticated);
+ });
