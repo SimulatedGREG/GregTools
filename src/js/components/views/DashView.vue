@@ -18,7 +18,7 @@
         <fieldset>
 
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="stream-title" v-model="status">
+            <input class="mdl-textfield__input" maxrows="-1" type="text" id="stream-title" v-model="status">
             <label class="mdl-textfield__label" for="stream-title">Title</label>
           </div>
 

@@ -36,8 +36,12 @@ router.map({
   }
 });
 
-router.beforeEach(function () {
+router.beforeEach(() => {
   window.scrollTo(0, 0);
+});
+
+router.afterEach(() => {
+  setTimeout(() => { componentHandler.upgradeDom(); });
 });
 
 router.redirect({
