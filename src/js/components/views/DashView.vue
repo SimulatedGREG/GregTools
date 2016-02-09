@@ -17,19 +17,19 @@
       <div class="mdl-cell mdl-cell--8-col">
         <fieldset>
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" maxrows="-1" type="text" id="stream-title" v-model="status">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" v-bind:class="{ 'is-dirty': Twitch.channel.status }">
+            <input class="mdl-textfield__input" type="text" id="stream-title" v-model="Twitch.channel.status">
             <label class="mdl-textfield__label" for="stream-title">Title</label>
           </div>
 
-          <games-typeahead v-ref:game></games-typeahead>
+          <games-typeahead></games-typeahead>
 
           <p class="mdl-slider-wrapper">
             <label for="stream-delay">
               Delay
-              <span>{{delay}} seconds</span>
+              <span>{{ Twitch.channel.delay }} seconds</span>
             </label>
-            <input class="mdl-slider mdl-js-slider" id="stream-delay" type="range" min="0" max="60" v-model="delay">
+            <input class="mdl-slider mdl-js-slider" id="stream-delay" type="range" min="0" max="60" v-model="Twitch.channel.delay">
           </p>
 
           <button class="mdl-button mdl-js-button mdl-button--raised" @click="updateChannel">
@@ -52,23 +52,17 @@
   export default {
     data() {
       return {
-        delay: 0,
-        status: '',
-        game: ''
-      }
-    },
-    computed: {
-      channelSettings() {
-        return {
-          game: this.$refs.game.query,
-          delay: this.delay,
-          status: this.status
-        }
+        Twitch: this.$root.Twitch
       }
     },
     methods: {
       updateChannel() {
         console.log(this.channelSettings);
+      }
+    },
+    events: {
+      'auth': function() {
+        this.Twitch = this.$root.Twitch;
       }
     },
     components: {

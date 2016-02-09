@@ -5,7 +5,7 @@
       <i class="fa fa-search" v-show="isEmpty"></i>
       <i class="fa fa-times" v-show="isDirty" @click="reset"></i>
     </template>
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" v-bind:class="{ 'is-dirty': $parent.Twitch.channel.game }">
       <input type="text"
              autocomplete="off"
              id="stream-game"
@@ -36,6 +36,7 @@
       return {
         limit: 5,
         src: 'https://api.twitch.tv/kraken/search/games?type=suggest',
+        query: this.$parent.Twitch.channel.game,
         onHit (item) {
           this.query = item.name;
           this.reset();
