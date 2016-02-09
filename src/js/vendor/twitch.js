@@ -15,11 +15,21 @@ function param(array) {
   var result = '';
 
   for ( var name in array ) {
-    if ( i != 0 ) {
+    if ( i !== 0 ) {
       result += '&';
     }
 
-    result += name + '=' + array[name];
+    if(typeof array[name] === 'object') {
+      var j = 0;
+      for( var key in array[name] ) {
+        result += name + '[' + key + ']=' + array[name][key];
+        if(j < Object.keys(array[name]).length-1) { result += '&'; }
+      }
+
+      j++;
+    } else {
+      result += name + '=' + array[name];
+    }
 
     i++;
   }

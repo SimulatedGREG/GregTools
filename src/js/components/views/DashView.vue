@@ -32,7 +32,7 @@
             <input class="mdl-slider mdl-js-slider" id="stream-delay" type="range" min="0" max="60" v-model="Twitch.channel.delay">
           </p>
 
-          <button class="mdl-button mdl-js-button mdl-button--raised" @click="updateChannel">
+          <button class="mdl-button mdl-js-button mdl-button--raised" @click="putChannel">
             Update
           </button>
 
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+  import Twitch from '../../vendor/twitch';
   import ViewHeader from '../ViewHeader.vue';
   import GamesTypeahead from './DashView/GamesTypeahead.vue';
 
@@ -56,8 +57,18 @@
       }
     },
     methods: {
-      updateChannel() {
-        console.log(this.channelSettings);
+      putChannel() {
+        Twitch.api({
+          method: 'channels/' + this.Twitch.channel.name,
+          params: {
+            channel: {
+              status: this.Twitch.channel.status,
+              game: this.Twitch.channel.game,
+              delay: this.Twitch.channel.delay
+            }
+          },
+          verb: 'PUT'
+        }, () => { this.$root.auth(true); });
       }
     },
     events: {

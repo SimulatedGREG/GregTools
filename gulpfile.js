@@ -62,7 +62,7 @@ gulp.task('js', () => {
     .on('error', (err) => console.log(err))
     .pipe(source('app.js'))
     .pipe(buffer())
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(rename('app.min.js'))
     .pipe(gulp.dest('includes/'))
     .on('end', electron.reload);

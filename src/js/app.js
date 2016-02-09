@@ -57,7 +57,7 @@ router.beforeEach(({to, next}) => {
    */
   if(!router.app.Twitch.authenticated) {
     Twitch.login({
-      scope: ['user_read', 'channel_read']
+      scope: ['user_read', 'channel_read', 'channel_editor']
     });
 
     /**

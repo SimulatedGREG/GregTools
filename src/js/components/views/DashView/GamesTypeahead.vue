@@ -32,13 +32,14 @@
 
   export default {
     mixins: [Typeahead],
-    data () {
+    data() {
       return {
         limit: 5,
         src: 'https://api.twitch.tv/kraken/search/games?type=suggest',
         query: this.$parent.Twitch.channel.game,
         onHit (item) {
           this.query = item.name;
+          this.$parent.Twitch.channel.game = item.name;
           this.reset();
         },
         prepareResponseData(data) {
