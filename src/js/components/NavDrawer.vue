@@ -19,6 +19,7 @@
     <main class="mdl-layout__content">
       <div class="page-content">
         <router-view></router-view>
+        <snack-bar></snack-bar>
       </div>
     </main>
   </div>
@@ -26,11 +27,15 @@
 
 <script>
   import ProfileStatus from './NavDrawer/ProfileStatus.vue';
+  import SnackBar from './NavDrawer/SnackBar.vue';
 
   export default {
     data() {
       return { }
     },
-    components: { ProfileStatus }
+    components: {
+      ProfileStatus,
+      SnackBar
+    }
   }
 </script>

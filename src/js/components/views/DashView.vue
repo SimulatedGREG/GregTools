@@ -29,29 +29,7 @@
 
   export default {
     data() {
-      return {
-        Twitch: this.$root.Twitch
-      }
-    },
-    methods: {
-      putChannel() {
-        Twitch.api({
-          method: 'channels/' + this.Twitch.channel.name,
-          params: {
-            channel: {
-              status: this.Twitch.channel.status,
-              game: this.Twitch.channel.game,
-              delay: this.Twitch.channel.delay
-            }
-          },
-          verb: 'PUT'
-        }, () => { this.$root.auth(true); });
-      }
-    },
-    events: {
-      'auth': function() {
-        this.Twitch = this.$root.Twitch;
-      }
+      return {}
     },
     components: {
       ViewHeader,

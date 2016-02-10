@@ -41,6 +41,10 @@
             channel: null
           };
         }
+      },
+      toast(message) {
+        var notification = document.querySelector('.mdl-js-snackbar');
+        notification.MaterialSnackbar.showSnackbar({ message });
       }
     },
     components: { NavDrawer }

@@ -49,7 +49,10 @@
             }
           },
           verb: 'PUT'
-        }, () => { this.$root.auth(true); });
+        }, () => {
+          this.$root.auth(true);
+          this.$root.toast('Channel Updated!');
+        });
       }
     },
     events: {
