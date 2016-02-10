@@ -1,28 +1,26 @@
 <template>
-  <div class="mdl-cell mdl-cell--8-col">
-    <fieldset>
+  <fieldset>
 
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" v-bind:class="{ 'is-dirty': Twitch.channel.status }">
-        <input class="mdl-textfield__input" type="text" id="stream-title" v-model="Twitch.channel.status">
-        <label class="mdl-textfield__label" for="stream-title">Title</label>
-      </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" v-bind:class="{ 'is-dirty': Twitch.channel.status }">
+      <input class="mdl-textfield__input" type="text" id="stream-title" v-model="Twitch.channel.status">
+      <label class="mdl-textfield__label" for="stream-title">Title</label>
+    </div>
 
-      <games-typeahead></games-typeahead>
+    <games-typeahead></games-typeahead>
 
-      <p class="mdl-slider-wrapper">
-        <label for="stream-delay">
-          Delay
-          <span>{{ Twitch.channel.delay }} seconds</span>
-        </label>
-        <input class="mdl-slider mdl-js-slider" id="stream-delay" type="range" min="0" max="60" v-model="Twitch.channel.delay">
-      </p>
+    <p class="mdl-slider-wrapper">
+      <label for="stream-delay">
+        Delay
+        <span>{{ Twitch.channel.delay }} seconds</span>
+      </label>
+      <input class="mdl-slider mdl-js-slider" id="stream-delay" type="range" min="0" max="60" v-model="Twitch.channel.delay">
+    </p>
 
-      <button class="mdl-button mdl-js-button mdl-button--raised" @click="putChannel">
-        Update
-      </button>
+    <button class="mdl-button mdl-js-button mdl-button--raised" @click="putChannel">
+      Update
+    </button>
 
-    </fieldset>
-  </div>
+  </fieldset>
 </template>
 
 <script>

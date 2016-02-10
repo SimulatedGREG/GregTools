@@ -26,7 +26,7 @@
           /**
            * Get Channel info
            */
-          Twitch.api({ method: 'channel'}, (err, channel) => {
+          Twitch.api({ method: 'channel' }, (err, channel) => {
             this.Twitch.channel = channel;
             let delay = this.Twitch.channel.delay;
             this.Twitch.channel.delay = (delay === null) ? 0 : delay;

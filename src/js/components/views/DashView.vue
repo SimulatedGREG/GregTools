@@ -14,7 +14,10 @@
   <view-header title="Dash"></view-header>
 
   <div class="mdl-grid">
-    <stream-editor></stream-editor>
+    <div class="mdl-cell mdl-cell--8-col">
+      <stream-editor></stream-editor>
+      <info-tabs></info-tabs>
+    </div
 
     <div class="mdl-cell mdl-cell--4-col">
       <!-- <iframe src="http://www.twitch.tv/simulatedgreg/chat?popout=" frameborder="0" scrolling="no"></iframe> -->
@@ -26,6 +29,7 @@
   import Twitch from '../../vendor/twitch';
   import ViewHeader from '../ViewHeader.vue';
   import StreamEditor from './DashView/StreamEditor.vue';
+  import InfoTabs from './DashView/InfoTabs.vue';
 
   export default {
     data() {
@@ -33,7 +37,8 @@
     },
     components: {
       ViewHeader,
-      StreamEditor
+      StreamEditor,
+      InfoTabs
     }
   }
 </script>
