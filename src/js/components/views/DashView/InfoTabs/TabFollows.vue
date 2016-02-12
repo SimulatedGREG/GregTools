@@ -1,6 +1,12 @@
 <style lang="scss">
-  .mdl-data-table .user-logo {
-    border-radius: 50%;
+  .mdl-data-table {
+    width: 100%;
+
+    th, td { text-align: center; }
+
+    .user-logo {
+      border-radius: 50%;
+    }
   }
 </style>
 
@@ -8,7 +14,7 @@
   <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
     <thead>
       <tr>
-        <th></th>
+        <th>Profile Picture</th>
         <th>Username</th>
         <th>Followed</th>
       </tr>
@@ -49,9 +55,9 @@
       },
       fuzzyTime(time) {
         return VagueTime.get({
-              to: new Date(time).getTime(),
-              from: Date.now(),
-              units: 'ms'
+            to: new Date(time).getTime(),
+            from: Date.now(),
+            units: 'ms'
           });
       }
     },

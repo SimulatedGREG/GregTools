@@ -14,13 +14,12 @@
   <view-header title="Dash"></view-header>
 
   <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--8-col">
+    <div class="mdl-cell mdl-cell--6-col">
       <stream-editor></stream-editor>
-      <info-tabs></info-tabs>
-    </div
+    </div>
 
-    <div class="mdl-cell mdl-cell--4-col">
-      <!-- <iframe src="http://www.twitch.tv/simulatedgreg/chat?popout=" frameborder="0" scrolling="no"></iframe> -->
+    <div class="mdl-cell mdl-cell--6-col">
+      <info-tabs></info-tabs>
     </div>
   </div>
 </template>
