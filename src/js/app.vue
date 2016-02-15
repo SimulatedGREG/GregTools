@@ -1,5 +1,5 @@
 <style lang="scss">
-
+  .hide { display: none; }
 </style>
 
 <template>
@@ -45,6 +45,13 @@
       toast(message) {
         var notification = document.querySelector('.mdl-js-snackbar');
         notification.MaterialSnackbar.showSnackbar({ message });
+      },
+      progressBar(toggle) {
+        if(toggle === 'hide')
+          document.getElementById('progress').className += ' hide';
+        else {
+          document.getElementById('progress').className = 'mdl-progress mdl-js-progress mdl-progress__indeterminate is-upgraded';
+        }
       }
     },
     components: { NavDrawer }

@@ -1,3 +1,15 @@
+<style lang="scss">
+  .mdl-slider-wrapper {
+    color: rgba(0, 0, 0, .5);
+    width: 300px;
+
+    span {
+      color: rgba(0, 0, 0, .5);
+      float: right;
+    }
+  }
+</style>
+
 <template>
   <fieldset>
 
@@ -37,6 +49,7 @@
     },
     methods: {
       putChannel() {
+        this.$root.progressBar('show');
         Twitch.api({
           method: 'channels/' + this.Twitch.channel.name,
           params: {
@@ -50,6 +63,7 @@
         }, () => {
           this.$root.auth(true);
           this.$root.toast('Channel Updated!');
+          this.$root.progressBar('hide');
         });
       }
     },

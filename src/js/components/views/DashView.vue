@@ -1,13 +1,5 @@
 <style lang="scss">
-  .mdl-slider-wrapper {
-    color: rgba(0, 0, 0, .5);
-    width: 300px;
-
-    span {
-      color: rgba(0, 0, 0, .5);
-      float: right;
-    }
-  }
+  
 </style>
 
 <template>

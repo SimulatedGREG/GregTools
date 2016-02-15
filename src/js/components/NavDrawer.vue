@@ -20,6 +20,7 @@
       <div class="page-content">
         <router-view></router-view>
         <snack-bar></snack-bar>
+        <progress-bar></progress-bar>
       </div>
     </main>
   </div>
@@ -28,6 +29,7 @@
 <script>
   import ProfileStatus from './NavDrawer/ProfileStatus.vue';
   import SnackBar from './NavDrawer/SnackBar.vue';
+  import ProgressBar from './NavDrawer/ProgressBar.vue';
 
   export default {
     data() {
@@ -35,7 +37,8 @@
     },
     components: {
       ProfileStatus,
-      SnackBar
+      SnackBar,
+      ProgressBar
     }
   }
 </script>
