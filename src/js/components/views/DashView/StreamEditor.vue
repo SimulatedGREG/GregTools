@@ -1,17 +1,29 @@
 <style lang="scss">
   .mdl-slider-wrapper {
-    color: rgba(0, 0, 0, .5);
-    width: 300px;
+    color: rgba(0,0,0,.26);
 
-    span {
-      color: rgba(0, 0, 0, .5);
-      float: right;
-    }
+    span { float: right; }
+  }
+
+  fieldset {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 1.5rem;
+
+    .mdl-textfield,
+    .mdl-slider-wrapper { width: 100%; }
+
+    .mdl-button { float: right; }
+  }
+
+  legend {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
   }
 </style>
 
 <template>
   <fieldset>
+    <legend>Stream Settings</legend>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" v-bind:class="{ 'is-dirty': Twitch.channel.status }">
       <input class="mdl-textfield__input" type="text" id="stream-title" v-model="Twitch.channel.status">
@@ -28,7 +40,7 @@
       <input class="mdl-slider mdl-js-slider" id="stream-delay" type="range" min="0" max="60" v-model="Twitch.channel.delay">
     </p>
 
-    <button class="mdl-button mdl-js-button mdl-button--raised" @click="putChannel">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" @click="putChannel">
       Update
     </button>
 
